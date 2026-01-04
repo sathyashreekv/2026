@@ -59,3 +59,26 @@ x=[1,2,3]
 print(sys.getrefcount(x))
 y=x
 print(sys.getrefcount(x))
+"""
+refrence count =>x =2 then y=x =>then it is 3
+underhood:
+
+When you ran sys.getrefcount(x), you likely saw a number higher than you expected. Here is why:
+
+Count = 1: When you created the object x = [1, 2, 3], the list object now has 1 reference.
+
+Count = 2: When you call sys.getrefcount(x), the function itself creates a temporary reference to x so it can inspect it.
+
+Count = 3: If you did y = x before calling the function, y is now a second permanent reference, and the function call makes it the third.
+
+The Core Principle: Objects are never explicitly destroyed by you; they are collected by the Garbage Collector only when they become "unreachable" (their reference count hits zero).
+
+3. Explaining "256 vs 257" (Implementation Details)
+The documentation you read explains that for immutable types (like int), the implementation can return a reference to an existing object with the same value.
+
+Small Integer Interning: CPython pre-allocates integers from -5 to 256 when it starts. When you say a = 256 and b = 256, they both point to the exact same pre-existing PyObject in memory. Hence, a is b is True.
+
+The 257 Case: Since 257 is outside that range, CPython creates a new object for a and a new object for b. They have the same value but different identities (memory addresses). Thus, a is b is False.
+
+Mutable Guarantee: For lists, even if they are empty, Python guarantees they will be unique objects. c = []; d = [] will always have different IDs because you must be able to mutate one without affecting the other.
+"""
