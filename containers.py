@@ -45,3 +45,4 @@ n=[x if i%2==0 else 0 for _ in range(4)]
 """
 n=[x if x%2==0 else 0 for x in range(4)]
 print(n)
+
