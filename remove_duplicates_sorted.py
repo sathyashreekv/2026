@@ -7,7 +7,7 @@ def removeduplicates(arr):
             arr[write]=arr[read]
            
             
-    return write+1 ,arr[:write+1]
+    return 
 
 
 arr=[1,1,2]
