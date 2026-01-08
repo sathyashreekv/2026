@@ -13,5 +13,5 @@ def checkPalindrome(s):
         right-=1
     return True
 
-s="A man, a plan, a canal: Panama"
+s=" "
 print(checkPalindrome(s))
