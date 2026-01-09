@@ -25,7 +25,7 @@ def findSum(arr):
 
 
 
-arr=[-1,0,1,2,-1,-4]
+arr=[-4,-1,-1,0,1,2,2]
 print(findSum(arr))
 
 
