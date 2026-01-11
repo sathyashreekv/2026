@@ -1,8 +1,9 @@
 def threesumclosest(nums,target):
     
     nums.sort()
+    closest_sum=float('inf')
     for i in range(len(nums)-2):
-        closest_sum=nums[i]+nums[i+1]+nums[i+2]
+        
         left=i+1
         right=len(nums)-1
         while left<right:
@@ -17,7 +18,7 @@ def threesumclosest(nums,target):
                 return target
     return closest_sum
 
-nums=[-1, -1, 0, 1, 1]
-print(threesumclosest(nums,0))
+nums=[10,20,30,40,50,60,70,80,90]
+print(threesumclosest(nums,1))
 
     
